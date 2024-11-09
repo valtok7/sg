@@ -1,0 +1,44 @@
+{
+    // IntelliSense を使用して利用可能な属性を学べます。
+    // 既存の属性の説明をホバーして表示します。
+    // 詳細情報は次を確認してください: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: current file",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal"
+        },        
+        {
+            "name": "Python: sg cui",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "sg",
+            "cwd": "${workspaceFolder}",
+            "args": ["m","--cui"],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },        
+        {
+            "name": "Python: sg gui",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "sg",
+            "cwd": "${workspaceFolder}",
+            "args": ["m"],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },        
+        {
+            "name": "Python: sg ++",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "__main__.py",
+            "cwd": "${workspaceFolder}",
+            "args": ["m"],
+            "justMyCode": true
+        },  
+    ]
+}

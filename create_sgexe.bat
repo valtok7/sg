@@ -1,0 +1,1 @@
+PyInstaller --onefile .\sg\__main__.py --name sg.exe 
