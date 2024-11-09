@@ -17,7 +17,7 @@
             "request": "launch",
             "program": "sg",
             "cwd": "${workspaceFolder}",
-            "args": ["m","--cui"],
+            "args": ["--cui", "--fs", "10.0", "--length", "1024", "--ampl", "2.0", "--freq", "0.1", "--initial_phase", "0.0"],
             "console": "integratedTerminal",
             "justMyCode": true
         },        
@@ -30,15 +30,6 @@
             "args": ["m"],
             "console": "integratedTerminal",
             "justMyCode": true
-        },        
-        {
-            "name": "Python: sg ++",
-            "type": "debugpy",
-            "request": "launch",
-            "program": "__main__.py",
-            "cwd": "${workspaceFolder}",
-            "args": ["m"],
-            "justMyCode": true
-        },  
+        }
     ]
 }

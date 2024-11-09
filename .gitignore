@@ -5,15 +5,11 @@ __pycache__/
 
 # Distribution / packaging
 build/
+*.spec
 
 # pipenv
 Pipfile.lock
 
-# test data
-*.csv
-
-# PyInstaller
-*.spec
-
 # misc
 sg_config.json
+*.csv
