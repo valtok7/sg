@@ -4,14 +4,15 @@ import sg_gui
 import wx
 import fire
 
-def main(cui:bool=False, fs:float=1.0, length:int=1024, ampl:float=1.0, freq:float=0.1, initial_phase:float=0.0):
+def main(cui:bool=False, fs:float=1.0, length:int=1024, ampl:float=1.0, freq:float=0.1, initial_phase:float=0.0, output_file_name:str='waveform.csv', output_file_type:str='CSV'):
     if cui == True:
-        # CUI
-        cw = sg_core.CW(fs=fs, ampl=ampl, freq=freq, initial_phase=initial_phase)
-        
+        # output file typeをstrからFileTypeに変換する
+        output_file_type = sg_core.FileType[output_file_type]
+
         # 信号生成
+        cw = sg_core.CW(fs=fs, ampl=ampl, freq=freq, initial_phase=initial_phase)        
         sg = sg_core.SG()
-        sg.generate(output_file_name='waveform.csv', length=length, waveforms=[cw])
+        sg.generate(output_file_name=output_file_name, output_file_type=output_file_type, length=length, waveforms=[cw])
         return
     
     else:

@@ -17,7 +17,7 @@
             "request": "launch",
             "program": "sg",
             "cwd": "${workspaceFolder}",
-            "args": ["--cui", "--fs", "10.0", "--length", "1024", "--ampl", "2.0", "--freq", "0.1", "--initial_phase", "0.0"],
+            "args": ["--cui", "--fs", "10.0", "--length", "1024", "--ampl", "2.0", "--freq", "0.1", "--initial_phase", "0.0", "--output_file_name", "waveform.bin", "--output_file_type", "BIN"],
             "console": "integratedTerminal",
             "justMyCode": true
         },        

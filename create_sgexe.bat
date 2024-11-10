@@ -1,1 +1,1 @@
-PyInstaller --onefile .\sg\__main__.py --name sg.exe 
+PyInstaller --onefile .\sg\__main__.py --name sg.exe --icon=.\sg\sg.ico --noconsole --clean

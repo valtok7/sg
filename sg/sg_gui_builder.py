@@ -83,13 +83,23 @@ class MyFrame1 ( wx.Frame ):
         self.m_fs = wx.TextCtrl( self, wx.ID_ANY, _(u"1.0"), wx.DefaultPosition, wx.DefaultSize, 0 )
         bSizer7.Add( self.m_fs, 0, wx.ALL, 5 )
 
-        self.m_staticText5 = wx.StaticText( self, wx.ID_ANY, _(u"length"), wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.m_staticText5 = wx.StaticText( self, wx.ID_ANY, _(u"Length"), wx.DefaultPosition, wx.DefaultSize, 0 )
         self.m_staticText5.Wrap( -1 )
 
         bSizer7.Add( self.m_staticText5, 0, wx.ALL, 5 )
 
         self.m_length = wx.TextCtrl( self, wx.ID_ANY, _(u"32"), wx.DefaultPosition, wx.DefaultSize, 0 )
         bSizer7.Add( self.m_length, 0, wx.ALL, 5 )
+
+        self.m_staticText6 = wx.StaticText( self, wx.ID_ANY, _(u"File Type"), wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.m_staticText6.Wrap( -1 )
+
+        bSizer7.Add( self.m_staticText6, 0, wx.ALL, 5 )
+
+        m_outputFileTypeChoices = [ _(u"CSV"), _(u"BIN") ]
+        self.m_outputFileType = wx.Choice( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, m_outputFileTypeChoices, 0 )
+        self.m_outputFileType.SetSelection( 0 )
+        bSizer7.Add( self.m_outputFileType, 0, wx.ALL, 5 )
 
 
         bSizer4.Add( bSizer7, 1, wx.EXPAND, 5 )

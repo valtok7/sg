@@ -20,6 +20,7 @@ class GUI( sg_gui_builderMyFrame1 ):
                 self.m_cwFreq.SetValue(str(config.get('cw_freq', '0.1'))) 
                 self.m_cwAmpl.SetValue(str(config.get('cw_ampl', '1.0')))
                 self.m_cwInitPhase.SetValue(str(config.get('cw_init_phase', '0.0')))
+                self.m_outputFileType.SetSelection(int(config.get('output_file_type', '0')))
         except FileNotFoundError:
             pass # 初回起動時はデフォルト値を使用
 
@@ -30,6 +31,7 @@ class GUI( sg_gui_builderMyFrame1 ):
             'cw_freq': self.m_cwFreq.GetValue(),
             'cw_ampl': self.m_cwAmpl.GetValue(), 
             'cw_init_phase': self.m_cwInitPhase.GetValue(),
+            'output_file_type': self.m_outputFileType.GetSelection()
         }
         with open(self.config_file, 'w') as f:
             json.dump(config, f, indent=4)
@@ -52,13 +54,15 @@ class GUI( sg_gui_builderMyFrame1 ):
 
     def OnButtonClickGenerate( self, event ):
         length = int(self.m_length.GetValue())
-        dialog = wx.FileDialog(None, "Select output file", style=wx.FD_SAVE)
-        dialog.ShowModal()
-        output_file_name:str = dialog.GetPath()
-        self.sg.generate(output_file_name=output_file_name, length=length, waveforms=self.waveforms)
-        dialog = wx.MessageDialog(None, "Completed", "Info", wx.OK)
-        dialog.ShowModal()
-        dialog.Destroy()
+        output_file_type = sg_core.FileType.CSV if self.m_outputFileType.GetSelection() == 0 else sg_core.FileType.BIN
+        extension = "csv" if output_file_type == sg_core.FileType.CSV else "bin"
+        dialog = wx.FileDialog(None, "Select output file", wildcard=f"*.{extension}", style=wx.FD_SAVE)
+        if dialog.ShowModal() == wx.ID_OK:
+            output_file_name:str = dialog.GetPath()
+            self.sg.generate(output_file_name=output_file_name, output_file_type=output_file_type, length=length, waveforms=self.waveforms)
+            dialog = wx.MessageDialog(None, "Completed", "Info", wx.OK)
+            dialog.ShowModal()
+            dialog.Destroy()
 
     def OnButtonClickClearList( self, event ):
         self.waveforms.clear()
