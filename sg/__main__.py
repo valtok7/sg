@@ -3,6 +3,7 @@ import sg_core
 import sg_gui
 import wx
 import fire
+import os
 
 def main(cui:bool=False, fs:float=1.0, length:int=1024, ampl:float=1.0, freq:float=0.1, initial_phase:float=0.0, output_file_name:str='waveform.csv', output_file_type:str='CSV'):
     if cui == True:
@@ -19,6 +20,9 @@ def main(cui:bool=False, fs:float=1.0, length:int=1024, ampl:float=1.0, freq:flo
         # GUI
         app = wx.App(False)
         frame = sg_gui.GUI(None)
+        dirname = os.path.dirname(os.path.abspath(__file__))
+        icon = wx.Icon(f"{dirname}/sg.ico", wx.BITMAP_TYPE_ICO)
+        frame.SetIcon(icon)
         frame.Show(True)
         app.MainLoop()
 
